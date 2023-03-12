@@ -4,3 +4,150 @@
     box-sizing: border-box;
     font-family: 'Anton', sans-serif;
 }
+
+:root {
+    --blue: #3f90fb;
+    --gray: #323232;
+    --time-l: 0.5s;
+    --time-s: 0.25s;
+}
+
+html {
+    color: var(--gray);
+    overflow-y: scroll;
+}
+
+.wrapper {
+    min-width: 20rem;
+    max-width: 60rem;
+    margin: 2rem auto;
+    padding: 0 0.625rem;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2em;
+    letter-spacing: 0.1rem;
+    font-weight: normal;
+}
+
+.item {
+    list-style: none;
+    margin: 1.25em 0;
+    border: 0.065rem dashed var(--gray);
+}
+
+.item, .item > a {
+    border-radius: 0.5rem;
+}
+
+.item__label {
+    display: flex;
+    align-items: center;
+    padding: 0.625em;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+.item__input {
+    display: none;
+}
+
+.item__label {
+    display: block;
+    text-align: center;
+}
+
+.item__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item__body {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: height var(--time-s) var(--time-s);
+}
+
+@media (hover: hover) { .item:hover .item__body {
+    height: 15em;
+}}
+.item__input:checked ~ .item__label .item__body {
+    height: 15em;
+}
+
+.item__image {
+    height: 100%;
+    width: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.item__title {
+    transition: color var(--time-l);
+}
+
+@media (hover: hover) {
+    .item__input:not(:checked) ~ .item__label .item__title {
+        color: var(--blue);
+    }
+    .accordion:hover .item__input:not(:checked) ~ .item__label .item__title {
+        color: inherit;
+    }
+    .icon {
+        opacity: 0;
+        transition: opacity var(--time-l);
+    }
+    .accordion:hover .icon {
+        opacity: 1;
+    }
+}
+
+.item > a {
+    display: block;
+    transition: opacity var(--time-l);
+}
+.item > a:active  {
+    color: var(--blue);
+    opacity: 0.8;
+}
+
+.icon,
+.icon__sprite-container,
+.icon__sym-1,
+.icon__sym-2 {
+    display: block;
+}
+
+.icon {
+    --size: 1.25em;
+    width: var(--size);
+    height: var(--size);
+    font-size: var(--size);
+    user-select: none;
+    overflow: hidden;
+}
+
+.icon__sym-1,
+.icon__sym-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--size);
+    height: var(--size);
+    text-align: center;
+}
+
+.icon__sprite-container {
+    transition: transform var(--time-s);
+    transform: translateY(0%);
+}
+
+@media (hover: hover) { .item:hover .icon__sprite-container {
+    transform: translateY(-50%);
+}}
+.item__input:checked ~ .item__label .icon__sprite-container {
+    transform: translateY(-50%);
+}
