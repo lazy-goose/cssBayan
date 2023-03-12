@@ -151,3 +151,24 @@ h1 {
 .item__input:checked ~ .item__label .icon__sprite-container {
     transform: translateY(-50%);
 }
+
+@media screen and (max-width: 20rem) {
+    .wrapper {
+        font-size: 0.5rem;
+    }
+}
+@media screen and (min-width: 20rem) {
+    .wrapper {
+        font-size: 0.5rem;
+    }
+}
+@media screen and (min-width: 30rem) {
+    .wrapper {
+        font-size: 0.75rem;
+    }
+}
+@media screen and (min-width: 50rem) {
+    .wrapper {
+        font-size: 1rem;
+    }
+}
